@@ -8,11 +8,11 @@ module.exports = sampledb.define(
     "post",
     {
         title: {
-            type: Sequelize.CHAR(150),
+            type: Sequelize.CHAR(15),
             allowNull: false,
         },
         content: {
-            type: Sequelize.CHAR(150),
+            type: Sequelize.CHAR(15),
             allowNull: false,
         },
         image: {

@@ -1,13 +1,18 @@
 class AppError extends Error {
-    constructor(message, statusCode) {
+    constructor(statusCode, message, name = "Error", isOperational = true, stack = '') {
         super(message);
 
         this.statusCode = statusCode;
+        this.name = name;
         this.status = `${statusCode}`.startsWith('4') ? 'failure' : 'error';
-        this.isOperational = true;
+        this.isOperational = isOperational;
 
-        Error.captureStackTrace(this, this.constructor);
+        if (stack) {
+            this.stack = stack;
+        } else {
+            Error.captureStackTrace(this, this.constructor);
+        }
     }
-}
+};
 
 module.exports = AppError;
